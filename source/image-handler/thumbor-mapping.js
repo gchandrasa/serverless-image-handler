@@ -32,8 +32,13 @@ class ThumborMapping {
         const edits = this.path.split('/');
         const filetype = (this.path.split('.'))[(this.path.split('.')).length - 1];
 
+        console.log(this.path);
+
         // Process the Dimensions
         const dimPath = this.path.match(/(?<=[\/])(\d+x\d+)/g);
+
+        console.log(dimPath);     
+
         if (dimPath) {
             // Assign dimenions from the first match only to avoid parsing dimension from image file names
             const dims = dimPath[0].split('x');
@@ -170,6 +175,8 @@ class ThumborMapping {
                 this.edits.resize = {};
             }
             const prop = Number(value);
+            console.log(this.edits.resize.width);
+            console.log(this.edits.resize.height);
             this.edits.resize.width = Number(this.edits.resize.width * prop);
             this.edits.resize.height = Number(this.edits.resize.height * prop);
         }
